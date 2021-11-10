@@ -391,7 +391,8 @@
       "unit_price_label": "Unit price",
       "view_cart": "View cart",
       "view_in_space": "View in your space",
-      "view_in_space_label": "View in your space, loads item in augmented reality window"
+      "view_in_space_label": "View in your space, loads item in augmented reality window",
+      "button_amazon": "See on amazon"
     }
   },
   "store_availability": {
@@ -418,6 +419,16 @@
       "remaining_html": "{{ balance }} left",
       "add_to_apple_wallet": "Add to Apple Wallet",
       "qr_image_alt": "QR code — scan to redeem gift card"
+    }
+  },
+  "customizations":{
+    "wholesale":{
+      "website": "Bussiness Website",
+      "business_name": "Company",
+      "business_type":"Tyoe of Business"
+    },
+    "afilliate_page":{
+      "amazon_btn": "Find on Amazon"
     }
   }
 }

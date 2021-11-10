@@ -391,7 +391,8 @@
       "availability": "Disponibilidade",
       "from_lowest_price_html": "de {{ lowest_price }}",
       "view_in_space": "Ver no seu espaço",
-      "view_in_space_label": "Ver em seu espaço, carregar item na janela de realidade aumentada"
+      "view_in_space_label": "Ver em seu espaço, carregar item na janela de realidade aumentada",
+      "button_amazon": "Veja na amazon"
     }
   },
   "gift_cards": {

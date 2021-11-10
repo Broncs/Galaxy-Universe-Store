@@ -42,11 +42,11 @@
 
           <div class="grid grid--half-gutters">
             <div class="grid__item medium-up--one-half">
-              <label for="{{ formId }}-name">Empresa</label>
+              <label for="{{ formId }}-name">{{'customizations.wholesale.business_name' | t }}</label>
               <input type="text" id="{{ formId }}-empresa" name="contact[Empresa]">
             </div>
             <div class="grid__item medium-up--one-half">
-              <label for="{{ formId }}-email">Website <span aria-hidden="true">*</span></label>
+              <label for="{{ formId }}-website">{{'customizations.wholesale.website' | t }} </label>
               <input
                 type="text"
                 id="{{ formId }}-website"
@@ -55,13 +55,7 @@
                 autocapitalize="off"
                 aria-required="true"
                 >
-              {%- if form.errors contains 'email' -%}
-                <span id="{{ formId}}-email-error" class="input-error-message">
-                  <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
-                  {% include 'icon-error' %}
-                  <span>{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
-                </span>
-              {%- endif -%}
+       
             </div>
           </div>
 
@@ -70,7 +64,7 @@
           {% unless section.settings.atacadoOptions  == blank %}
           {% assign atacadoOptions = section.settings.atacadoOptions | split: ',' %}
 
-          <label for="{{ formId }}-tipo-negocio">Tipo de Negocio</label>
+          <label for="{{ formId }}-tipo-negocio">{{'customizations.wholesale.business_type' | t }}</label>
           
              <select id="{{ formId }}-tipo-negocio" name="contact[tipo-negocio]">
                {% for option in atacadoOptions %}
