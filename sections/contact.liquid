@@ -38,10 +38,12 @@
           <label for="{{ formId }}-phone">{{ 'contact.form.phone' | t }}</label>
           <input type="tel" id="{{ formId }}-phone" name="contact[{{ 'contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
 
-
+          
           {% if section.settings.isOrderVisible %}
+
             <label for="{{ formId }}-orderNumber">Númedo do pedido</label>
             <input type="text" id="{{ formId }}-orderNumber" name="contact[numero do pedido]"  >
+
           {% endif  %}
         
 
@@ -52,6 +54,7 @@
 
         {% endform %}
       </div>
+      
   
   {% schema %}
   {

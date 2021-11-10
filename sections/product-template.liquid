@@ -131,16 +131,31 @@
       {% endif %}
     </div>
 
+    {% for tag in product.tags %}
+      {% if tag contains 'afiliado_' %}
+        {% assign afiliadoLink =  tag | replace: 'afiliado_' , ''  %}
+        {% assign isAfiliado = true %}
+    {%endif%}
+  {% endfor %}
+
     <div class="grid__item {{ product_description_width }}">
       <div class="product-single__meta">
 
         <h1 class="product-single__title">{{ product.title }}</h1>
-        <div>⭐⭐⭐⭐⭐ </div>
+      
         <script>window.performance.mark('debut:product:title_visible');</script>
 
-          <div class="product__price">
-            {% include 'product-price', variant: current_variant, show_vendor: section.settings.show_vendor %}
-          </div>
+    
+         
+        {%unless isAfiliado %}
+          <div>⭐⭐⭐⭐⭐ </div>
+            <div class="product__price">  
+              {% include 'product-price', variant: current_variant, show_vendor: section.settings.show_vendor %}
+            </div>
+        {% endunless %}
+        
+        
+        
 
           {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
             <div class="product__policies rte" data-product-policies>
@@ -159,6 +174,8 @@
             {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
           {%- endcapture %}
 
+
+       
           {% form 'product', product, class:form_classes, novalidate: 'novalidate', data-product-form: '' %}
             {{ form | payment_terms }}
 
@@ -218,6 +235,7 @@
                 {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
                 {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}"
               >
+              {%unless isAfiliado %} 
                 <button type="submit" name="add"
                   {% unless current_variant.available %} aria-disabled="true"{% endunless %}
                   aria-label="{% unless current_variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endunless %}"
@@ -235,12 +253,18 @@
                     {% include 'icon-spinner' %}
                   </span>
                 </button>
+               
                 {% if section.settings.enable_payment_button %}
                   {{ form | payment_button }}
                 {% endif %}
+
+                {% else %}
+                 <a data-add-to-cart class="btn product-form__cart-submit" href={{ afiliadoLink }} target="_blank" class="btn-secondary">Veja na Amazon </a>
+                {% endunless %} 
               </div>
             </div>
           {% endform %}
+       
         </div>
 
         {%- comment -%}
