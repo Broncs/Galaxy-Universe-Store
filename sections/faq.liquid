@@ -1,29 +1,75 @@
 
-<h1>{{section.settings.heading}}</h1>
-<h3>{{section.settings.question}}</h3>
-<p>{{section.settings.answer}}</p>
+
+
+  
+
+
+<div class="faq"> 
+
+    {% unless section.settings.perguntas == blank  %}
+        <h1>{{section.settings.perguntas}}</h1>
+    {% endunless %} 
+        
+
+    {% for block in section.blocks %}
+            {% if block.type == "QA" %}
+
+            <div class="question">
+                <input type="checkbox" id="question-{{ forloop.index }}" class="question-toggle">
+                <label for="question-{{ forloop.index }}" class="question-label">{{block.settings.pergunta}}</label>
+                <div class="answer">
+                    {{ block.settings.resposta }}</div>
+            </div>
+
+            {% elsif  block.type == "sub-titulo" %}
+            <h4>{{ block.settings.title }}</h4> 
+            {% endif %}
+    {% endfor %}
+	
+</div>
+ 
+
 
 {% schema %}
 {
-    "name":"Perguntas",
-    "settings": [
+  
+    "name": "Pergunta",
+    "settings":[
         {
             "type": "text",
-            "label": "heading for faq",
-            "id": "heading"
-        },
-        { 
-            "type": "text",
-            "label": "customer question",
-            "id": "question"
-        },
-        { 
-            "type": "textarea",
-            "label": "customer answer",
-            "id": "answer"
+            "label": "Titulo Principal",
+            "id": "perguntas"
         }
-
-     
+    ],
+    "blocks":[
+        {
+            "type": "QA",
+            "name": "Perguntas e Respostas",
+            "settings": [
+                {
+                    "type": "text",
+                    "label": "pergunta",
+                    "id": "pergunta"
+                },
+                {
+                    "type": "text",
+                    "label": "resposta",
+                    "id": "resposta"  
+                }
+            ]
+        },
+        {
+            "type": "sub-titulo",
+            "name": "Sub titulo",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "label": "Sub titulo",
+                    "id": "title"
+                }
+            ]
+        }
     ]
 }
 {% endschema %}
+
