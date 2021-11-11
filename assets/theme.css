@@ -7057,3 +7057,10 @@ hr {
         }
 
 
+
+        /* judge.me app  */
+
+       .jdgm-histogram__bar-content{
+          background-color: #672990 !important;
+        }  
+       

@@ -148,7 +148,8 @@
     
          
         {%unless isAfiliado %}
-          <div>⭐⭐⭐⭐⭐ </div>
+          <!-- <div>⭐⭐⭐⭐⭐ </div> -->
+          {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false %}
             <div class="product__price">  
               {% include 'product-price', variant: current_variant, show_vendor: section.settings.show_vendor %}
             </div>
@@ -303,6 +304,13 @@
           {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product.featured_media %}
         {% endif %}
     </div>
+
+
+
+
+
+    {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false %}
+    
   </div>
 </div>
 
@@ -314,6 +322,7 @@
     {{ product.media | where: 'media_type', 'model' | json }}
   </script>
 {% endunless %}
+
 
 
 
